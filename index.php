@@ -5,7 +5,7 @@
 require_once './commons/env.php'; // file biết môi trường
 require_once './commons/helper.php';
 require_once './commons/connect-db.php'; // require file connect csdl
-require_once './commons/crud-db.php';
+require_once './commons/model.php';
 
 // require các file trong Controller và models
 //....
@@ -13,9 +13,7 @@ require_once './commons/crud-db.php';
 require_file(PATH_CONTROLLER);
 require_file(PATH_MODEL);
 
-delete('users',14);
 
-die;
 //... điều hướng ....
 
 $act = $_GET['act'] ?? '/';

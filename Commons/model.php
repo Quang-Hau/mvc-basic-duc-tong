@@ -1,5 +1,7 @@
 <?php
 
+/// model commons dùng chung trong tát cả các model dự án 
+
 //CRUD  -> Create / Read / Update / Delete
 
 if(!function_exists('get_str_keys')) {
@@ -74,7 +76,7 @@ if (!function_exists('listAll')) { //Mục đích: Tạo câu lệnh SQL để c
     {
         try {
 
-            $sql = "SELECT * FROM $tableName";
+            $sql = "SELECT * FROM $tableName ORDER BY id DESC";
             $stmt = $GLOBALS["conn"]->prepare($sql);
                                     //Phương thức prepare của PDO chuẩn bị một câu lệnh SQL để thực thi. 
                                     //Việc chuẩn bị câu lệnh SQL này cho phép bạn sử dụng các tham số ảo (placeholder) 

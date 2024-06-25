@@ -28,3 +28,12 @@ if (!function_exists('debug')) {
         print_r($data);
     }
 }
+
+
+if (!function_exists('e404')) {
+    function e404()
+    {
+        echo '<h1> 404 - Not found </h1>';
+        die;
+    }
+}
