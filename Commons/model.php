@@ -154,8 +154,8 @@ if (!function_exists('update')) { //Mục đích: Tạo câu lệnh SQL để ch
     }
 }
 
-if (!function_exists('delete')) { //Mục đích: Tạo câu lệnh SQL để chèn dữ liệu vào bảng.
-    function delete($tableName,$id)
+if (!function_exists('removed')) { //Mục đích: Tạo câu lệnh SQL để chèn dữ liệu vào bảng.
+    function removed($tableName,$id)
     {
         try {
 

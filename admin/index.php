@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // require các file trong commons
 
 require_once '../commons/env.php'; // file biết môi trường
@@ -17,7 +17,7 @@ require_file(PATH_MODEL_ADMIN);
 //... điều hướng ....
 
 $act = $_GET['act'] ?? '/';
-
+//crud
 match ($act) {
     '/' => dashboard(),
     'users' => userListAll(),
