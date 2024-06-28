@@ -16,8 +16,8 @@
                 </tr>
                 <?php foreach ($user as $fieldName => $value) : ?>
                     <tr>
-                        <th><?= ucfirst($fieldName) ?></th>
-                        <th>
+                        <td><?= ucfirst($fieldName) ?></td>
+                        <td>
                             <?php
                             switch ($fieldName) {
                                 case 'password':
@@ -31,7 +31,7 @@
                                     break;
                             }
                             ?>
-                        </th>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </table>

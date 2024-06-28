@@ -43,7 +43,7 @@ function userCreate()
             'type' => $_POST['type'] ?? null,
         ];
 
-        $errors = validateCreate($data);
+        $errors = validateUserCreate($data);
 
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
@@ -66,7 +66,7 @@ function userCreate()
 }
 
 //valiate Create 
-function validateCreate($data)
+function validateUserCreate($data)
 {
     $errors = [];
     //vld Name
@@ -123,7 +123,7 @@ function userUpdate($id)
             'type' => $_POST['type'] ?? null
         ];
 
-        $errors = validateUpdate($id ,$data);
+        $errors = validateUserUpdate($id ,$data);
 
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
@@ -140,7 +140,7 @@ function userUpdate($id)
 }
 
 //validate update
-function validateUpdate($id,$data)
+function validateUserUpdate($id,$data)
 {
     $errors = [];
     //vld Name

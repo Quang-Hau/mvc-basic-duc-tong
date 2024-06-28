@@ -178,3 +178,60 @@ if (!function_exists('removed')) { //Mục đích: Tạo câu lệnh SQL để c
         }
     }
 }
+
+
+
+// hamf tương tác csdl check có trùng Name k trùng trả về true và ngược lại
+if (!function_exists('checkUniqueName')) { //Mục đích: Tạo câu lệnh SQL để chèn dữ liệu vào bảng.
+    function checkUniqueName($tableName, $name)
+    {
+        try {
+
+            $sql = "SELECT * FROM $tableName WHERE name = :name LIMIT 1";
+            $stmt = $GLOBALS["conn"]->prepare($sql);
+            //Phương thức prepare của PDO chuẩn bị một câu lệnh SQL để thực thi. 
+            //Việc chuẩn bị câu lệnh SQL này cho phép bạn sử dụng các tham số ảo (placeholder) 
+            //như :param để liên kết với các giá trị thực tế sau này.
+
+            $stmt->bindParam(":name", $name);
+
+            $stmt->execute(); // thực thi câu truy vấn
+            //Dòng mã $stmt->execute(); trong PHP có tác dụng thực thi câu lệnh SQL đã được chuẩn bị trước đó bằng phương thức prepare().
+            // Đây là một phần quan trọng trong quy trình sử dụng PDO để tương tác với cơ sở dữ liệu, đặc biệt khi bạn muốn bảo vệ ứng dụng khỏi các cuộc tấn công SQL injection và tối ưu hóa hiệu suất.
+
+            $data = $stmt->fetch();
+
+            return empty($data) ? true : false;
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+
+if (!function_exists('checkUniqueNameForUpdate')) { //Mục đích: Tạo câu lệnh SQL để chèn dữ liệu vào bảng.
+    function checkUniqueNameForUpdate($tableName,$id, $name)
+    {
+        try {
+
+            $sql = "SELECT * FROM $tableName WHERE name = :name AND id <> :id LIMIT 1";
+            $stmt = $GLOBALS["conn"]->prepare($sql);
+            //Phương thức prepare của PDO chuẩn bị một câu lệnh SQL để thực thi. 
+            //Việc chuẩn bị câu lệnh SQL này cho phép bạn sử dụng các tham số ảo (placeholder) 
+            //như :param để liên kết với các giá trị thực tế sau này.
+
+            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute(); // thực thi câu truy vấn
+            //Dòng mã $stmt->execute(); trong PHP có tác dụng thực thi câu lệnh SQL đã được chuẩn bị trước đó bằng phương thức prepare().
+            // Đây là một phần quan trọng trong quy trình sử dụng PDO để tương tác với cơ sở dữ liệu, đặc biệt khi bạn muốn bảo vệ ứng dụng khỏi các cuộc tấn công SQL injection và tối ưu hóa hiệu suất.
+
+            $data = $stmt->fetch();
+
+            return empty($data) ? true : false;
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
